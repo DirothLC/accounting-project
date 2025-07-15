@@ -7,6 +7,12 @@ import (
 	"github.com/shopspring/decimal"
 )
 
+/*
+This file demonstrates an example of using tools for enveloping currencies.
+This implementation was created only for a visual demonstration of opportunities for
+Importing tools you are free to develop your own implementation
+*/
+
 func ConverterExamples() {
 	fmt.Println("Select conversion:\n 1. KZT to...\n 2. ... to KZT")
 	var choice int

@@ -1,5 +1,10 @@
 package logic
 
+/*
+This file implements a visual demonstration of tools for counting weekly transactions.
+Focusing on input values, you can understand the principle of work for further adaptation to your needs.
+*/
+
 import (
 	"Accounting/pkg/calculations"
 	"fmt"
