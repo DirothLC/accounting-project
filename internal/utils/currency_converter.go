@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"Accounting/pkg/enums"
+	"Accounting/internal/enums"
 	"github.com/shopspring/decimal"
 )
 

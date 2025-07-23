@@ -1,4 +1,4 @@
-package logic
+package examples
 
 /*
 This file implements a visual demonstration of tools for counting weekly transactions.
@@ -6,7 +6,7 @@ Focusing on input values, you can understand the principle of work for further a
 */
 
 import (
-	"Accounting/pkg/calculations"
+	"Accounting/internal/calculations"
 	"fmt"
 	"github.com/shopspring/decimal"
 )

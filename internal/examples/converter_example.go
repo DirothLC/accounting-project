@@ -1,8 +1,8 @@
-package logic
+package examples
 
 import (
-	"Accounting/pkg/enums"
-	"Accounting/pkg/utils"
+	"Accounting/internal/enums"
+	"Accounting/internal/utils"
 	"fmt"
 	"github.com/shopspring/decimal"
 )

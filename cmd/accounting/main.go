@@ -1,8 +1,15 @@
 package main
 
-import "Accounting/internal/logic"
+import (
+	"Accounting/config"
+	"Accounting/internal/database"
+)
 
 func main() {
-	logic.CalculationExample()
-	logic.ConverterExamples()
+	config.InitConfig()
+	database.Connect(config.Cfg.DbURL)
+	if config.Cfg.AutoMigrate {
+		database.Migrate()
+	}
+
 }
