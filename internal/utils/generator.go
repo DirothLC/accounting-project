@@ -21,8 +21,8 @@ func GenerateRandomFloat(min, max float64) float64 {
 	return min + rng.Float64()*(max-min)
 }
 
-func GenerateUUID() string {
-	return uuid.New().String()
+func GenerateUUID() uuid.UUID {
+	return uuid.New()
 }
 
 func GenerateString(n int) string {

@@ -3,6 +3,7 @@ package main
 import (
 	"Accounting/config"
 	"Accounting/internal/database"
+	"Accounting/internal/examples"
 )
 
 func main() {
@@ -11,5 +12,6 @@ func main() {
 	if config.Cfg.AutoMigrate {
 		database.Migrate()
 	}
+	examples.CreateTxExample()
 
 }

@@ -14,10 +14,10 @@ var statusTransitions = map[string][]string{
 	"CHARGE": {"REFUND"},
 }
 
-func CreateTransaction(terminalID int64, orderID string, amount float64, code string, message *string) (*entities.Transaction, error) {
+func CreateTransaction(terminal entities.Terminal, orderID string, amount float64, code string, message *string) (*entities.Transaction, error) {
 	tx := &entities.Transaction{
 		ID:            utils.GenerateID(),
-		TerminalID:    terminalID,
+		TerminalID:    terminal.ID,
 		OrderID:       orderID,
 		Amount:        amount,
 		Status:        "NEW",
