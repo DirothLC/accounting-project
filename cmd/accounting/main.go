@@ -16,5 +16,5 @@ func main() {
 	var transaction = examples.CreateTxExample()
 	service.ChangeTransactionStatus(transaction.ID, "AUTH")
 	service.ChargeTransaction(transaction.ID)
-	service.CancelTransaction(transaction.ID)
+	service.RefundTransaction(transaction.ID)
 }

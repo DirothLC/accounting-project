@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - accounting-net
+
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DB_URL: ${DB_URL}
+      AUTO_MIGRATE: ${AUTO_MIGRATE}
+    ports:
+      - "8080:8080"
+    networks:
+      - accounting-net
+
+volumes:
+  postgres_data:
+
+networks:
+  accounting-net:

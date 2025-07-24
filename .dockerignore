@@ -1,0 +1,8 @@
+.git
+*.exe
+*.log
+*.env
+*.env.dist
+vendor/
+tmp/
+bin/
