@@ -4,6 +4,7 @@ import (
 	"Accounting/config"
 	"Accounting/internal/database"
 	"Accounting/internal/examples"
+	"Accounting/internal/service"
 )
 
 func main() {
@@ -12,6 +13,8 @@ func main() {
 	if config.Cfg.AutoMigrate {
 		database.Migrate()
 	}
-	examples.CreateTxExample()
-
+	var transaction = examples.CreateTxExample()
+	service.ChangeTransactionStatus(transaction.ID, "AUTH")
+	service.ChargeTransaction(transaction.ID)
+	service.CancelTransaction(transaction.ID)
 }

@@ -5,6 +5,7 @@ import (
 	"Accounting/internal/entities"
 	"Accounting/internal/utils"
 	"errors"
+	"log"
 	"time"
 )
 
@@ -50,6 +51,7 @@ func ChangeTransactionStatus(transactionID int64, newStatus string) error {
 	}
 	tx.Status = newStatus
 	tx.StatusChanged = time.Now()
+	log.Println("Changing transaction status:", tx.ID, "to", newStatus)
 	return database.DB.Save(&tx).Error
 }
 
