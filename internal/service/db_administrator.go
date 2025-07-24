@@ -16,7 +16,7 @@ var statusTransitions = map[string][]string{
 
 func CreateTransaction(terminalID int64, orderID string, amount float64, code string, message *string) (*entities.Transaction, error) {
 	tx := &entities.Transaction{
-		ID:            utils.GenerateTransactionID(),
+		ID:            utils.GenerateID(),
 		TerminalID:    terminalID,
 		OrderID:       orderID,
 		Amount:        amount,
