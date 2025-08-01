@@ -5,6 +5,7 @@ import (
 	"Accounting/internal/entities"
 	"Accounting/internal/utils"
 	"errors"
+	"gorm.io/gorm"
 	"log"
 	"time"
 )
@@ -64,4 +65,30 @@ func ChargeTransaction(id int64) error {
 }
 func RefundTransaction(id int64) error {
 	return ChangeTransactionStatus(id, "REFUND")
+}
+
+func CheckClientSecret(db *gorm.DB, clientID string, clientSecret string) (bool, error) {
+	var terminal entities.Terminal
+	err := db.Where("client_id = ?", clientID).First(&terminal).Error
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return false, nil
+		}
+		return false, err
+	}
+	if terminal.ClientSecret != clientSecret {
+		return false, nil
+	}
+	return true, nil
+}
+func GetTerminalByClientID(db *gorm.DB, clientID string) (*entities.Terminal, error) {
+	var terminal entities.Terminal
+	err := db.Where("client_id = ?", clientID).First(&terminal).Error
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return nil, nil
+		}
+		return nil, err
+	}
+	return &terminal, nil
 }

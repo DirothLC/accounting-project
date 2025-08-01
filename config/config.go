@@ -10,6 +10,7 @@ type Config struct {
 	Debug       bool
 	AutoMigrate bool
 	DbURL       string
+	JWTSecret   string
 }
 
 var Cfg Config
@@ -29,5 +30,6 @@ func InitConfig() {
 		Debug:       viper.GetBool("DEBUG"),
 		AutoMigrate: viper.GetBool("AUTO_MIGRATE"),
 		DbURL:       viper.GetString("DB_URL"),
+		JWTSecret:   viper.GetString("JWT_SECRET"),
 	}
 }
