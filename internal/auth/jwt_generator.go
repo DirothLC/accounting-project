@@ -24,7 +24,6 @@ func GenerateJWT(terminalID int64, clientID string) (string, error) {
 			Issuer:    "accounting",
 		},
 	}
-
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	return token.SignedString([]byte(config.Cfg.JWTSecret))
 }
