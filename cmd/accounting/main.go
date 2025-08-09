@@ -2,9 +2,8 @@ package main
 
 import (
 	"Accounting/config"
+	"Accounting/internal/currency"
 	"Accounting/internal/database"
-	"Accounting/internal/examples"
-	"Accounting/internal/service"
 )
 
 func main() {
@@ -13,8 +12,10 @@ func main() {
 	if config.Cfg.AutoMigrate {
 		database.Migrate()
 	}
-	var transaction = examples.CreateTxExample()
+	/*var transaction = examples.CreateTxExample()
 	service.ChangeTransactionStatus(transaction.ID, "AUTH")
 	service.ChargeTransaction(transaction.ID)
-	service.RefundTransaction(transaction.ID)
+	service.RefundTransaction(transaction.ID)*/
+
+	currency.ImportCurrencyRates()
 }
